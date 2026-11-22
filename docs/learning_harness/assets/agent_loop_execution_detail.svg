@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1530" viewBox="0 0 1600 1530" role="img"><title>Agent loop 模块展开</title><desc>同一 run 内保持消息与回执配对；结束等待学生后，下一次请求会建立新的运行</desc><rect width="100%" height="100%" fill="#FAFCFE"/>
+<text x="50.0" y="68.2" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="36" font-weight="700" fill="#183047">Agent loop 模块展开</text>
+<text x="52.0" y="110.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="21" font-weight="400" fill="#52687A">同一 run 内保持消息与回执配对；结束等待学生后，下一次请求会建立新的运行</text>
+<rect x="50" y="150" width="1500" height="1310" rx="22" fill="#EFF6FD" stroke="#8EB6D6" stroke-width="3"/>
+<polyline points="800,260 800,320" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="800.0,320.0 794.0,309.6 806.0,309.6" fill="#2874B2"/>
+<polyline points="800,440 800,500" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="800.0,500.0 794.0,489.6 806.0,489.6" fill="#2874B2"/>
+<polyline points="800,610 800,685" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="800.0,685.0 794.0,674.6 806.0,674.6" fill="#2874B2"/>
+<polyline points="560,745 320,745 320,875" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="320.0,875.0 314.0,864.6 326.0,864.6" fill="#2874B2"/>
+<polyline points="1040,745 1280,745 1280,875" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1280.0,875.0 1274.0,864.6 1286.0,864.6" fill="#2874B2"/>
+<polyline points="320,1045 320,1110" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="320.0,1110.0 314.0,1099.6 326.0,1099.6" fill="#2874B2"/>
+<polyline points="100,1170 75,1170 75,380 560,380" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="560.0,380.0 549.6,386.0 549.6,374.0" fill="#2874B2"/>
+<polyline points="1280,1045 1280,1110" fill="none" stroke="#238367" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1280.0,1110.0 1274.0,1099.6 1286.0,1099.6" fill="#238367"/>
+<polyline points="1500,945 1525,945 1525,380 1040,380" fill="none" stroke="#C9822C" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1040.0,380.0 1050.4,374.0 1050.4,386.0" fill="#C9822C"/>
+<rect x="560" y="180" width="480" height="80" rx="16" fill="#FFFFFF" stroke="#C9DAE8" stroke-width="2"/>
+<text x="582.0" y="220.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">AgentRunner 创建本次运行</text>
+<text x="582.0" y="244.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">run_id / 独立 messages / 准备策略</text>
+<rect x="560" y="320" width="480" height="120" rx="16" fill="#FFFFFF" stroke="#C9DAE8" stroke-width="2"/>
+<text x="582.0" y="360.9" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">每次请求前准备上下文</text>
+<text x="582.0" y="385.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">检查输入预算与记忆来源有效性</text>
+<text x="582.0" y="413.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">必要时压缩完整、已闭合历史</text>
+<rect x="560" y="500" width="480" height="110" rx="16" fill="#FFFFFF" stroke="#C9DAE8" stroke-width="2"/>
+<text x="582.0" y="540.9" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">请求模型</text>
+<text x="582.0" y="565.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">允许的工具定义、消息与输出要求</text>
+<rect x="560" y="685" width="480" height="120" rx="16" fill="#FFFFFF" stroke="#C9DAE8" stroke-width="2"/>
+<text x="582.0" y="725.9" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">处理模型响应</text>
+<text x="582.0" y="751.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">是否包含 tool_calls？</text>
+<rect x="100" y="875" width="440" height="170" rx="16" fill="#FFFFFF" stroke="#C9DAE8" stroke-width="2"/>
+<text x="122.0" y="916.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="24" font-weight="700" fill="#183047">工具分支</text>
+<text x="122.0" y="954.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">先校验角色、参数、可信范围</text>
+<text x="122.0" y="984.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">执行查询或受限业务委派</text>
+<text x="122.0" y="1014.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">受工具预算、并发与故障策略约束</text>
+<rect x="1060" y="875" width="440" height="170" rx="16" fill="#FFFFFF" stroke="#C9DAE8" stroke-width="2"/>
+<text x="1082.0" y="916.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="24" font-weight="700" fill="#183047">候选结果分支</text>
+<text x="1082.0" y="954.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">解析 JSON 并校验 Schema</text>
+<text x="1082.0" y="984.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">执行可选业务 validate_output</text>
+<text x="1082.0" y="1014.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">可修正错误形成反馈，预算内重试</text>
+<rect x="100" y="1110" width="440" height="135" rx="16" fill="#FFFFFF" stroke="#C9DAE8" stroke-width="2"/>
+<text x="122.0" y="1149.9" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="22" font-weight="700" fill="#183047">把回执追加到原 messages</text>
+<text x="122.0" y="1188.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">assistant 调用 + 对应 tool_call_id</text>
+<text x="122.0" y="1216.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">原调用方模型继续决策</text>
+<rect x="1060" y="1110" width="440" height="135" rx="16" fill="#EAF6F0" stroke="#8EC3AE" stroke-width="2"/>
+<text x="1082.0" y="1150.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">返回结构化结果</text>
+<text x="1082.0" y="1188.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">交回业务用例继续校验或提交</text>
+<text x="1082.0" y="1216.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">正式作答后的主 Agent 接续是新 run</text>
+<rect x="190" y="1310" width="1220" height="115" rx="16" fill="#193B59" stroke="#193B59" stroke-width="2"/>
+<text x="212.0" y="1350.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#FFFFFF">Runtime 持续提供执行保障</text>
+<text x="212.0" y="1375.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#FFFFFF">轮次与工具预算 · 并发与熔断 · 取消与循环超时 · 用量与轨迹 · 未完成正文撤回</text>
+<text x="212.0" y="1403.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#FFFFFF">租约丢失、取消及不可修正故障会结束当前运行；不作为普通工具输入错误无限重试。</text>
+<rect x="340" y="756" width="100.0" height="29" rx="4" fill="#FAFCFE" stroke="#FAFCFE" stroke-width="1"/>
+<text x="345.0" y="777.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#52687A">有工具调用</text>
+<rect x="1075" y="756" width="100.0" height="29" rx="4" fill="#FAFCFE" stroke="#FAFCFE" stroke-width="1"/>
+<text x="1080.0" y="777.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#52687A">无工具调用</text>
+<rect x="105" y="809" width="172.0" height="29" rx="4" fill="#FAFCFE" stroke="#FAFCFE" stroke-width="1"/>
+<text x="110.0" y="830.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#2874B2">回执进入下一轮输入</text>
+<rect x="1185" y="345" width="164.0" height="29" rx="4" fill="#FAFCFE" stroke="#FAFCFE" stroke-width="1"/>
+<text x="1190.0" y="366.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#C9822C">可修正错误 → 反馈</text>
+<text x="60.0" y="1504.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#52687A">委派工具可以先提交业务产物，再把回执交回父 loop；最终 JSON 并非所有业务副作用的起点。</text>
+</svg>

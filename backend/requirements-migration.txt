@@ -1,0 +1,3 @@
+-r requirements.txt
+# 只供离线读取旧 MySQL 快照，在线应用不导入该驱动。
+PyMySQL==1.2.3

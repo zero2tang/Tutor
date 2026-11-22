@@ -1,0 +1,4 @@
+-r requirements.txt
+black==26.10.1
+# 原有隔离回归仍使用 SQLite fixture，不进入生产依赖。
+langgraph-checkpoint-sqlite==3.1.2

@@ -1,0 +1,428 @@
+{
+  "$defs": {
+    "AnswerEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "answer": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Answer",
+          "type": "string"
+        },
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "wait_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "question_id": {
+          "maxLength": 96,
+          "minLength": 1,
+          "title": "Question Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "answer",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "answer",
+        "request_id",
+        "wait_id",
+        "question_id",
+        "kind"
+      ],
+      "title": "AnswerEvent",
+      "type": "object"
+    },
+    "BatchAnswerEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "batch_id": {
+          "maxLength": 36,
+          "minLength": 1,
+          "title": "Batch Id",
+          "type": "string"
+        },
+        "answers": {
+          "items": {
+            "$ref": "#/$defs/BatchAnswerItem"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Answers",
+          "type": "array"
+        },
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "wait_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "batch_answer",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "batch_id",
+        "answers",
+        "request_id",
+        "wait_id",
+        "kind"
+      ],
+      "title": "BatchAnswerEvent",
+      "type": "object"
+    },
+    "BatchAnswerItem": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "maxLength": 96,
+          "minLength": 1,
+          "title": "Question Id",
+          "type": "string"
+        },
+        "answer": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Answer",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "answer"
+      ],
+      "title": "BatchAnswerItem",
+      "type": "object"
+    },
+    "ExternalProblem": {
+      "additionalProperties": false,
+      "properties": {
+        "stem": {
+          "maxLength": 8000,
+          "minLength": 2,
+          "title": "Stem",
+          "type": "string"
+        },
+        "source_kind": {
+          "default": "pasted",
+          "enum": [
+            "pasted",
+            "recognized"
+          ],
+          "title": "Source Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "stem"
+      ],
+      "title": "ExternalProblem",
+      "type": "object"
+    },
+    "GuidanceEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "start",
+            "reply",
+            "hint",
+            "explain",
+            "transfer",
+            "close"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "problem": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExternalProblem"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "text": {
+          "default": "",
+          "maxLength": 5000,
+          "title": "Text",
+          "type": "string"
+        },
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "expected_version": {
+          "anyOf": [
+            {
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Expected Version"
+        },
+        "wait_id": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wait Id"
+        },
+        "kind": {
+          "const": "guidance_action",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "request_id",
+        "kind"
+      ],
+      "title": "GuidanceEvent",
+      "type": "object"
+    },
+    "MessageEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "maxLength": 5000,
+          "minLength": 1,
+          "title": "Content",
+          "type": "string"
+        },
+        "intent": {
+          "default": "auto",
+          "enum": [
+            "auto",
+            "teach",
+            "practice",
+            "explain",
+            "review"
+          ],
+          "title": "Intent",
+          "type": "string"
+        },
+        "cognitive_type": {
+          "default": "understanding",
+          "enum": [
+            "recall",
+            "understanding",
+            "application"
+          ],
+          "title": "Cognitive Type",
+          "type": "string"
+        },
+        "generate": {
+          "default": false,
+          "title": "Generate",
+          "type": "boolean"
+        },
+        "exercise_count": {
+          "anyOf": [
+            {
+              "maximum": 6,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exercise Count"
+        },
+        "concept_ids": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Concept Ids",
+          "type": "array"
+        },
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "wait_id": {
+          "anyOf": [
+            {
+              "maxLength": 120,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wait Id"
+        },
+        "kind": {
+          "enum": [
+            "message",
+            "followup",
+            "clarify",
+            "change_goal"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "content",
+        "request_id",
+        "kind"
+      ],
+      "title": "MessageEvent",
+      "type": "object"
+    },
+    "PracticeEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "maxLength": 96,
+          "minLength": 1,
+          "title": "Question Id",
+          "type": "string"
+        },
+        "cognitive_type": {
+          "default": "understanding",
+          "enum": [
+            "recall",
+            "understanding",
+            "application"
+          ],
+          "title": "Cognitive Type",
+          "type": "string"
+        },
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "practice_existing",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "request_id",
+        "kind"
+      ],
+      "title": "PracticeEvent",
+      "type": "object"
+    },
+    "SkipEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "wait_id": {
+          "maxLength": 120,
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "skip",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "wait_id",
+        "kind"
+      ],
+      "title": "SkipEvent",
+      "type": "object"
+    }
+  },
+  "discriminator": {
+    "mapping": {
+      "answer": "#/$defs/AnswerEvent",
+      "batch_answer": "#/$defs/BatchAnswerEvent",
+      "change_goal": "#/$defs/MessageEvent",
+      "clarify": "#/$defs/MessageEvent",
+      "followup": "#/$defs/MessageEvent",
+      "guidance_action": "#/$defs/GuidanceEvent",
+      "message": "#/$defs/MessageEvent",
+      "practice_existing": "#/$defs/PracticeEvent",
+      "skip": "#/$defs/SkipEvent"
+    },
+    "propertyName": "kind"
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/MessageEvent"
+    },
+    {
+      "$ref": "#/$defs/AnswerEvent"
+    },
+    {
+      "$ref": "#/$defs/BatchAnswerEvent"
+    },
+    {
+      "$ref": "#/$defs/PracticeEvent"
+    },
+    {
+      "$ref": "#/$defs/GuidanceEvent"
+    },
+    {
+      "$ref": "#/$defs/SkipEvent"
+    }
+  ],
+  "title": "TeachingInputEventV2",
+  "x-version": 2,
+  "x-status": "production_routing",
+  "x-rules": [
+    "payload hash computed on server; exact raw answers retained",
+    "request lifecycle received/completed/abandoned; historical verified fields never authorize execution",
+    "RuntimeContext never serialized; only asset references are persisted",
+    "optional guidance has a version token without mandatory interrupt"
+  ]
+}

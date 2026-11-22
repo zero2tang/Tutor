@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1410" viewBox="0 0 1800 1410" role="img"><title>业务状态、评分证据与派生记忆</title><desc>展开正式单题作答：进度、有效证据、掌握估计与学习记忆各有含义</desc><rect width="100%" height="100%" fill="#FAFCFE"/>
+<text x="50.0" y="68.2" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="36" font-weight="700" fill="#183047">业务状态、评分证据与派生记忆</text>
+<text x="52.0" y="110.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="21" font-weight="400" fill="#52687A">展开正式单题作答：进度、有效证据、掌握估计与学习记忆各有含义</text>
+<rect x="580" y="650" width="1160" height="360" rx="22" fill="#F0F9F4" stroke="#8BC2A5" stroke-width="3"/>
+<text x="610.0" y="688.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="24" font-weight="700" fill="#238367">评分提交事务</text>
+<polyline points="520,235 650,235" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="650.0,235.0 639.6,241.0 639.6,229.0" fill="#2874B2"/>
+<polyline points="290,310 290,380" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="290.0,380.0 284.0,369.6 296.0,369.6" fill="#2874B2"/>
+<polyline points="890,310 890,400" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="890.0,400.0 884.0,389.6 896.0,389.6" fill="#2874B2"/>
+<polyline points="890,580 890,720" fill="none" stroke="#2874B2" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="890.0,720.0 884.0,709.6 896.0,709.6" fill="#2874B2"/>
+<polyline points="980,815 1040,815" fill="none" stroke="#238367" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1040.0,815.0 1029.6,821.0 1029.6,809.0" fill="#238367"/>
+<polyline points="800,720 800,705 1555,705 1555,720" fill="none" stroke="#238367" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1555.0,720.0 1549.0,709.6 1561.0,709.6" fill="#238367"/>
+<polyline points="1555,910 1555,1080" fill="none" stroke="#8056AD" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="1555.0,1080.0 1549.0,1069.6 1561.0,1069.6" fill="#8056AD"/>
+<polyline points="1740,1180 1770,1180 1770,235 1740,235" fill="none" stroke="#8056AD" stroke-width="3" stroke-linejoin="round" stroke-dasharray="8 7"/>
+<polygon points="1740.0,235.0 1750.4,229.0 1750.4,241.0" fill="#8056AD"/>
+<polyline points="580,945 550,945 550,960 520,960" fill="none" stroke="#238367" stroke-width="3" stroke-linejoin="round"/>
+<polygon points="520.0,960.0 530.4,954.0 530.4,966.0" fill="#238367"/>
+<rect x="80" y="160" width="440" height="150" rx="16" fill="#EEF4FC" stroke="#AFC5DE" stroke-width="2"/>
+<text x="102.0" y="202.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="25" font-weight="700" fill="#183047">学习会话与目标</text>
+<text x="102.0" y="240.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">LearningSession / SessionGoalState</text>
+<text x="102.0" y="271.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">保存活动、目标、待答状态和版本</text>
+<rect x="80" y="380" width="440" height="170" rx="16" fill="#F1F5F8" stroke="#BACAD5" stroke-width="2"/>
+<text x="102.0" y="422.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="25" font-weight="700" fill="#183047">流程进度</text>
+<text x="102.0" y="459.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">LearningContinuation / learning_progress</text>
+<text x="102.0" y="490.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">例如：已讲解，下一步等待学生作答</text>
+<text x="102.0" y="521.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">记录执行过什么，不直接修改掌握度</text>
+<rect x="650" y="160" width="480" height="150" rx="16" fill="#F3EEF9" stroke="#C2ADDA" stroke-width="2"/>
+<text x="672.0" y="202.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="25" font-weight="700" fill="#183047">学生提交与帮助快照</text>
+<text x="672.0" y="240.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">当前原题、学生原答、提交前帮助条件</text>
+<text x="672.0" y="271.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">用户消息可在正式评分事务之前保存</text>
+<rect x="650" y="400" width="480" height="180" rx="16" fill="#EEF4FC" stroke="#AFC5DE" stroke-width="2"/>
+<text x="672.0" y="442.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="25" font-weight="700" fill="#183047">隔离评分与冻结评分包</text>
+<text x="672.0" y="480.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">规则判分 + assessment 角色</text>
+<text x="672.0" y="512.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">仅按当前题、原答和帮助条件评分</text>
+<text x="672.0" y="544.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">不注入历史画像、学习记忆或工具</text>
+<rect x="620" y="720" width="360" height="190" rx="16" fill="#EAF6F0" stroke="#8EC3AE" stroke-width="2"/>
+<text x="642.0" y="760.9" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">作答与证据账本</text>
+<text x="642.0" y="799.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">Attempt / GradingPacket</text>
+<text x="642.0" y="831.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">EvidenceConceptLink</text>
+<text x="642.0" y="863.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">绑定原答片段、题目身份与来源版本</text>
+<rect x="1040" y="720" width="320" height="190" rx="16" fill="#EAF6F0" stroke="#8EC3AE" stroke-width="2"/>
+<text x="1062.0" y="760.9" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">学生能力状态</text>
+<text x="1062.0" y="798.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">StudentState</text>
+<text x="1062.0" y="830.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">学生域按有效账本归约</text>
+<text x="1062.0" y="862.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">重评可替换或撤回旧贡献</text>
+<rect x="1410" y="720" width="290" height="190" rx="16" fill="#EAF6F0" stroke="#8EC3AE" stroke-width="2"/>
+<text x="1432.0" y="760.9" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">原始记忆事实</text>
+<text x="1432.0" y="798.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">MemoryFact</text>
+<text x="1432.0" y="830.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">同事务登记来源与版本</text>
+<text x="1432.0" y="862.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">不是模型生成的摘要</text>
+<rect x="80" y="840" width="440" height="210" rx="16" fill="#FFF7E9" stroke="#DAC39D" stroke-width="2"/>
+<text x="102.0" y="882.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="25" font-weight="700" fill="#183047">当前练习待答状态</text>
+<text x="102.0" y="920.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">发布时冻结题目、保留内部答案</text>
+<text x="102.0" y="952.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">本次提交后按结果更新待答状态</text>
+<text x="102.0" y="984.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">帮助以提交前记录为准</text>
+<text x="102.0" y="1016.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#183047">答后补讲只影响后续作答</text>
+<rect x="1390" y="1080" width="350" height="200" rx="16" fill="#F3EEF9" stroke="#C2ADDA" stroke-width="2"/>
+<text x="1412.0" y="1120.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">后台派生学习记忆</text>
+<text x="1412.0" y="1158.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">MemoryWorker / 业务记忆任务</text>
+<text x="1412.0" y="1188.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">提取候选，校验来源与版本</text>
+<text x="1412.0" y="1218.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">ScopeMemory 等有来源记忆</text>
+<text x="1412.0" y="1248.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#183047">修订或遗忘可使旧来源失效</text>
+<rect x="1370" y="160" width="370" height="150" rx="16" fill="#F3EEF9" stroke="#C2ADDA" stroke-width="2"/>
+<text x="1392.0" y="200.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="23" font-weight="700" fill="#183047">后续教学上下文</text>
+<text x="1392.0" y="239.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">按课程、学生、概念范围投影</text>
+<text x="1392.0" y="270.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="19" font-weight="400" fill="#183047">请求前继续检查记忆撤销状态</text>
+<text x="620.0" y="964.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#238367">作答、证据、能力变化、记忆事实与相应待答状态更新共享原事务；中间失败一起回滚。</text>
+<rect x="685" y="606" width="172.0" height="29" rx="4" fill="#FAFCFE" stroke="#FAFCFE" stroke-width="1"/>
+<text x="690.0" y="627.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#52687A">冻结并验证局部证据</text>
+<rect x="1420" y="1018" width="172.0" height="29" rx="4" fill="#FAFCFE" stroke="#FAFCFE" stroke-width="1"/>
+<text x="1425.0" y="1039.1" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="18" font-weight="400" fill="#8056AD">业务提交后另行处理</text>
+<text x="80.0" y="1152.8" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="24" font-weight="700" fill="#183047">“讲过 / 做完步骤”不能直接推导“掌握”。</text>
+<text x="80.0" y="1200.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="21" font-weight="400" fill="#183047">正式评分后的反馈发布和主 Agent 接续发生在评分事务之后。</text>
+<text x="80.0" y="1240.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="21" font-weight="400" fill="#183047">整次请求包含多个短事务，不是一个包住模型调用的大事务。</text>
+<text x="80.0" y="1349.0" font-family="Microsoft YaHei,Noto Sans CJK SC,sans-serif" font-size="20" font-weight="400" fill="#52687A">读图重点：业务事实是依据；掌握度与记忆是不同投影；摘要、流程完成和模型观察都不能直接当成掌握证明。</text>
+</svg>

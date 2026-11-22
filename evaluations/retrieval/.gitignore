@@ -1,0 +1,13 @@
+.venv-ragas/
+.cache/
+datasets/*/assets/
+datasets/*/private/
+datasets/*/work/
+datasets/*/review/**/*.html
+runs/
+reports/*.html
+reports/*.csv
+*.tmp
+__pycache__/
+.pytest_cache/
+datasets/math_medium_v1/

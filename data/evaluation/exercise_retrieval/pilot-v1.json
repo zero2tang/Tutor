@@ -1,0 +1,21 @@
+{
+  "course_id": "math",
+  "reviewer": "Codex按公开题干及原图核对；尚无独立教师复标",
+  "frozen_before_evaluation": true,
+  "release_policy": "此开发集只验收链路，不据此自动启用全量题库或承诺质量提升；功能和权限回归必须全部通过。",
+  "question_ids": ["math:1", "math:2", "math:3", "math:4", "math:6", "math:7", "math:8", "math:10", "math:1010", "math:1014", "math:1015", "math:1016", "math:1017", "math:1021", "math:1022", "math:1039"],
+  "queries": [
+    {"id":"exact-id","intent":"exact","query_text":"math:1014","source_group":"segments-1014","split":"development","labels":{"math:1014":3},"rationale":"精确题号应绕过模型和读图。"},
+    {"id":"exact-text","intent":"exact","query_text":"下图有（ ）条线段． A.6 B.10 C.15 D.21","source_group":"segments-1014","split":"development","labels":{"math:1014":3},"hard_negative_ids":["math:1015","math:1016"],"rationale":"题干与选项联合找原题，图形计数主题相同不代表原题。"},
+    {"id":"exact-image","intent":"exact","source_question_id":"math:1010","source_group":"abacus-1010","split":"development","labels":{"math:1010":3},"rationale":"已有公开题图作为查询，不通过显式题号查找路径；核对数位和珠数。"},
+    {"id":"exact-angles","intent":"exact","source_question_id":"math:1022","source_group":"angles-straight","split":"development","labels":{"math:1022":3},"hard_negative_ids":["math:1039","math:1017"],"rationale":"角度题外观相似但已知数值、角位置或直角数量不同。"},
+    {"id":"iso-angle-image","intent":"isomorphic","source_question_id":"math:1022","source_group":"angles-straight","split":"development","labels":{"math:1039":3,"math:1017":1,"math:1021":1},"rationale":"直线同侧含一个直角、一个已知锐角和一个待求角；周角中有两个直角不按严格同构计。"},
+    {"id":"iso-angle-text","intent":"isomorphic","query_text":"直线上方有三个相邻角，其中一个是直角，一个是35度，求另一个角。","source_group":"angles-straight","split":"development","labels":{"math:1039":3,"math:1022":3,"math:1017":1,"math:1021":1},"rationale":"数值变化保留平角分解及减法结构。"},
+    {"id":"iso-product-image","intent":"isomorphic","source_question_id":"math:6","source_group":"two-stage-product","split":"development","labels":{"math:7":3,"math:4":1,"math:1":1},"rationale":"两阶段独立选择的乘法计数；三阶段或异科选两本并非相同任务结构。"},
+    {"id":"iso-product-text","intent":"isomorphic","query_text":"有3件上衣和5条裤子，每次选一件上衣和一条裤子，有多少种搭配？","source_group":"two-stage-product","split":"development","labels":{"math:6":3,"math:7":3,"math:4":1,"math:1":1},"rationale":"情境与数值变化，两个独立选择阶段保持不变。"},
+    {"id":"method-count","intent":"same_method","source_question_id":"math:1015","source_group":"interval-count","split":"development","labels":{"math:1014":3,"math:1016":3},"rationale":"从共同顶点选两条射线、从标记点选两端或选矩形左右边界，均可示范有序计数与避免重复。"},
+    {"id":"method-perimeter","intent":"same_method","source_question_id":"math:8","source_group":"orthogonal-perimeter","split":"development","labels":{"math:10":3},"rationale":"台阶外形与凹多边形不同，可示范按方向整理边长的周长方法，不能当原题。"},
+    {"id":"method-color","intent":"same_method","source_question_id":"math:3","source_group":"region-coloring","split":"development","labels":{"math:2":3},"rationale":"均依区域邻接约束进行染色计数；区域数和邻接图不同，可作同方法候选。"},
+    {"id":"method-angle-text","intent":"same_method","query_text":"找利用直角、平角或周角的和差关系求未知角的例题。","source_group":"angles-straight","split":"development","labels":{"math:1039":3,"math:1022":3,"math:1017":3,"math:1021":2},"rationale":"方法意图允许直角数量和具体角位置不同，不采用原题模式的差异否决规则。"}
+  ]
+}

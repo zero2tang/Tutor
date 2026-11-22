@@ -1,0 +1,27 @@
+{
+  "version": 2,
+  "course": "mechanics",
+  "target_success_rate": 0.8,
+  "tasks": [
+    {"id":"T01","name":"完整课程数据与三种本地存储可用","category":"infrastructure"},
+    {"id":"T02","name":"按原始题号快速定位单向应力题","category":"search","query":"Pm_668268","expected_id":"mechanics:Pm_668268"},
+    {"id":"T03","name":"关键词检索单向应变定义","category":"search","query":"单向应变 定义","expected_id":"mechanics:Pm_668269"},
+    {"id":"T04","name":"语义改写查找单位面积受力题","category":"search","query":"拉伸试验中，把作用力按截面大小平均分摊后的物理量是什么","expected_id":"mechanics:Pm_668268"},
+    {"id":"T05","name":"多知识点全部覆盖筛选","category":"search","concept_ids":["mechanics:c19","mechanics:c160"]},
+    {"id":"T06","name":"RAG 返回应力应变公式和来源","category":"rag","query":"应力应变的定义、量纲和线弹性关系"},
+    {"id":"T07","name":"Graph RAG 返回真实图边及文本证据","category":"graph_rag","query":"应力和应变有什么联系","seed_concept_ids":["mechanics:c19","mechanics:c160"]},
+    {"id":"T08","name":"课程范围隔离","category":"permissions"},
+    {"id":"T09","name":"冷启动状态保持待评估","category":"student_state"},
+    {"id":"T10","name":"主 Agent 调度知识点 Agent 完成有证据教学","category":"agents"},
+    {"id":"T11","name":"多知识点目标与关联讲解","category":"agents"},
+    {"id":"T12","name":"连续追问保持同一学习目标","category":"conversation"},
+    {"id":"T13","name":"习题 Agent 选题与评估 Agent 作答前预测","category":"exercise"},
+    {"id":"T14","name":"正确答案形成独立证据与有界更新","category":"assessment","answer":"C"},
+    {"id":"T15","name":"错误答案形成诊断及下一步","category":"assessment","answer":"A"},
+    {"id":"T16","name":"重复提交幂等且不重复计分","category":"reliability"},
+    {"id":"T17","name":"多空填空真实作答判分","category":"assessment","answer":"横截面面积；长度"},
+    {"id":"T18","name":"生成变式通过独立解答校验","category":"generation"},
+    {"id":"T19","name":"看过题解或知识讲解不提升独立掌握度","category":"permissions"},
+    {"id":"T20","name":"新客户端恢复原题和持久化事件","category":"recovery"}
+  ]
+}

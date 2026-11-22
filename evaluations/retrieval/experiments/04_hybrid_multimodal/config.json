@@ -1,0 +1,1 @@
+{"id":"E4","title":"混合 RAG＋图文向量","channels":["keyword","text_vector","multimodal"],"candidate_limit":50,"rrf_k":60}

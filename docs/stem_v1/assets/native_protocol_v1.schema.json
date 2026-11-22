@@ -1,0 +1,795 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "NativeProtocolV1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "state": {
+      "additionalProperties": false,
+      "properties": {
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        },
+        "workflow_version": {
+          "const": "teaching-session-v1",
+          "title": "Workflow Version",
+          "type": "string"
+        },
+        "messages": {
+          "items": {
+            "additionalProperties": true,
+            "type": "object"
+          },
+          "title": "Messages",
+          "type": "array"
+        },
+        "input_event": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "answer": "#/$defs/Answer",
+                  "batch_answer": "#/$defs/BatchAnswer",
+                  "change_goal": "#/$defs/ChangeGoal",
+                  "clarify": "#/$defs/Clarify",
+                  "close": "#/$defs/Close",
+                  "followup": "#/$defs/Followup",
+                  "message": "#/$defs/Message",
+                  "skip": "#/$defs/Skip"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/Message"
+                },
+                {
+                  "$ref": "#/$defs/Answer"
+                },
+                {
+                  "$ref": "#/$defs/BatchAnswer"
+                },
+                {
+                  "$ref": "#/$defs/Followup"
+                },
+                {
+                  "$ref": "#/$defs/Clarify"
+                },
+                {
+                  "$ref": "#/$defs/ChangeGoal"
+                },
+                {
+                  "$ref": "#/$defs/Skip"
+                },
+                {
+                  "$ref": "#/$defs/Close"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Event"
+        },
+        "domain_refs": {
+          "items": {
+            "$ref": "#/$defs/Ref"
+          },
+          "title": "Domain Refs",
+          "type": "array"
+        },
+        "pending_interaction": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Wait"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "artifact_refs": {
+          "items": {
+            "$ref": "#/$defs/Ref"
+          },
+          "title": "Artifact Refs",
+          "type": "array"
+        },
+        "assessment_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Ref"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "memory_manifest": {
+          "additionalProperties": true,
+          "title": "Memory Manifest",
+          "type": "object"
+        },
+        "response_ref": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Ref"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "schema_version",
+        "workflow_version",
+        "messages",
+        "domain_refs",
+        "artifact_refs",
+        "memory_manifest"
+      ],
+      "title": "State",
+      "type": "object"
+    },
+    "input_event": {
+      "discriminator": {
+        "mapping": {
+          "answer": "#/$defs/Answer",
+          "batch_answer": "#/$defs/BatchAnswer",
+          "change_goal": "#/$defs/ChangeGoal",
+          "clarify": "#/$defs/Clarify",
+          "close": "#/$defs/Close",
+          "followup": "#/$defs/Followup",
+          "message": "#/$defs/Message",
+          "skip": "#/$defs/Skip"
+        },
+        "propertyName": "kind"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/Message"
+        },
+        {
+          "$ref": "#/$defs/Answer"
+        },
+        {
+          "$ref": "#/$defs/BatchAnswer"
+        },
+        {
+          "$ref": "#/$defs/Followup"
+        },
+        {
+          "$ref": "#/$defs/Clarify"
+        },
+        {
+          "$ref": "#/$defs/ChangeGoal"
+        },
+        {
+          "$ref": "#/$defs/Skip"
+        },
+        {
+          "$ref": "#/$defs/Close"
+        }
+      ]
+    },
+    "receipt": {
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "request_id": {
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "received",
+            "completed"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "input_message_id": {
+          "title": "Input Message Id",
+          "type": "string"
+        },
+        "result_refs": {
+          "items": {
+            "$ref": "#/$defs/Ref"
+          },
+          "title": "Result Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "operation_id",
+        "request_id",
+        "payload_hash",
+        "status",
+        "input_message_id",
+        "result_refs"
+      ],
+      "title": "Receipt",
+      "type": "object",
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "completed"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "result_refs": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "received"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "result_refs": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  "required": [
+    "state",
+    "input_event",
+    "receipt"
+  ],
+  "$defs": {
+    "Answer": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "answer",
+          "title": "Kind",
+          "type": "string"
+        },
+        "wait_id": {
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "question_id": {
+          "minLength": 1,
+          "title": "Question Id",
+          "type": "string"
+        },
+        "answer": {
+          "minLength": 1,
+          "title": "Answer",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind",
+        "wait_id",
+        "question_id",
+        "answer"
+      ],
+      "title": "Answer",
+      "type": "object"
+    },
+    "BatchAnswer": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "batch_answer",
+          "title": "Kind",
+          "type": "string"
+        },
+        "wait_id": {
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "batch_id": {
+          "minLength": 1,
+          "title": "Batch Id",
+          "type": "string"
+        },
+        "answers": {
+          "items": {
+            "$ref": "#/$defs/BatchItem"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Answers",
+          "type": "array"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind",
+        "wait_id",
+        "batch_id",
+        "answers"
+      ],
+      "title": "BatchAnswer",
+      "type": "object"
+    },
+    "BatchItem": {
+      "additionalProperties": false,
+      "properties": {
+        "question_id": {
+          "title": "Question Id",
+          "type": "string"
+        },
+        "answer": {
+          "minLength": 1,
+          "title": "Answer",
+          "type": "string"
+        }
+      },
+      "required": [
+        "question_id",
+        "answer"
+      ],
+      "title": "BatchItem",
+      "type": "object"
+    },
+    "ChangeGoal": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "change_goal",
+          "title": "Kind",
+          "type": "string"
+        },
+        "content": {
+          "minLength": 1,
+          "title": "Content",
+          "type": "string"
+        },
+        "expected_goal_version": {
+          "minimum": 0,
+          "title": "Expected Goal Version",
+          "type": "integer"
+        },
+        "wait_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wait Id"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind",
+        "content",
+        "expected_goal_version"
+      ],
+      "title": "ChangeGoal",
+      "type": "object"
+    },
+    "Clarify": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "clarify",
+          "title": "Kind",
+          "type": "string"
+        },
+        "wait_id": {
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "content": {
+          "minLength": 1,
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind",
+        "wait_id",
+        "content"
+      ],
+      "title": "Clarify",
+      "type": "object"
+    },
+    "Close": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "close",
+          "title": "Kind",
+          "type": "string"
+        },
+        "wait_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Wait Id"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind"
+      ],
+      "title": "Close",
+      "type": "object"
+    },
+    "Followup": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "followup",
+          "title": "Kind",
+          "type": "string"
+        },
+        "wait_id": {
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "content": {
+          "minLength": 1,
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind",
+        "wait_id",
+        "content"
+      ],
+      "title": "Followup",
+      "type": "object"
+    },
+    "Message": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "message",
+          "title": "Kind",
+          "type": "string"
+        },
+        "content": {
+          "minLength": 1,
+          "title": "Content",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind",
+        "content"
+      ],
+      "title": "Message",
+      "type": "object"
+    },
+    "Ref": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "title": "Kind",
+          "type": "string"
+        },
+        "id": {
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "version"
+      ],
+      "title": "Ref",
+      "type": "object"
+    },
+    "Skip": {
+      "additionalProperties": false,
+      "properties": {
+        "request_id": {
+          "maxLength": 80,
+          "minLength": 8,
+          "title": "Request Id",
+          "type": "string"
+        },
+        "payload_hash": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Payload Hash",
+          "type": "string"
+        },
+        "source_message_id": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Message Id"
+        },
+        "kind": {
+          "const": "skip",
+          "title": "Kind",
+          "type": "string"
+        },
+        "wait_id": {
+          "minLength": 1,
+          "title": "Wait Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "request_id",
+        "payload_hash",
+        "kind",
+        "wait_id"
+      ],
+      "title": "Skip",
+      "type": "object"
+    },
+    "Wait": {
+      "additionalProperties": false,
+      "properties": {
+        "wait_id": {
+          "title": "Wait Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "answer",
+            "batch_answer",
+            "clarify"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/Ref"
+        },
+        "allowed_events": {
+          "items": {
+            "type": "string"
+          },
+          "title": "Allowed Events",
+          "type": "array"
+        }
+      },
+      "required": [
+        "wait_id",
+        "kind",
+        "source",
+        "allowed_events"
+      ],
+      "title": "Wait",
+      "type": "object"
+    }
+  },
+  "x-version": 1,
+  "x-status": "frozen_contract_not_production_routing",
+  "x-rules": [
+    "received is not completed; completed requires nonempty formal result_refs",
+    "hash exact raw answers; canonicalize outer JSON encoding only",
+    "reject stale wait and re-read after claim; never restore authorization from checkpoint",
+    "framework message serialization uses official serde; persist asset references only",
+    "RuntimeContext student/course/session/turn/services/budget comes from server on each invoke",
+    "every write uses stable operation_id, transactional owner validation and formal receipt",
+    "same request_id with changed payload_hash is rejected"
+  ]
+}

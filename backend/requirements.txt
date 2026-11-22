@@ -1,0 +1,21 @@
+fastapi>=0.115,<1
+uvicorn[standard]>=0.34,<1
+sqlalchemy>=2.0,<3
+psycopg[binary,pool]==3.3.6
+alembic==1.20.1
+cryptography>=44
+neo4j>=5.26,<7
+httpx>=0.28,<1
+python-dotenv>=1.0,<2
+pydantic>=2.10,<3
+pdfplumber>=0.11,<0.12
+Pillow>=10,<14
+pytest>=8,<10
+pytest-asyncio>=0.25,<2
+
+# F0 已验证的标准 Agent 与执行图版本。
+langchain==1.4.7
+langgraph==1.2.16
+langchain-openai==1.7.2
+# 生产会话与记忆执行状态统一使用官方 PostgreSQL 后端。
+langgraph-checkpoint-postgres==3.2.0

@@ -1,0 +1,2681 @@
+{
+  "agent_runs": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "turn_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "agent",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "skill",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "model",
+        "type": "VARCHAR(80)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "duration_ms",
+        "type": "DOUBLE PRECISION",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "prompt_tokens",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "completion_tokens",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "tool_calls",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "output_summary",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": "TEXT",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "private_diagnostics",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_agent_runs_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_agent_runs_turn_id",
+        "columns": [
+          "turn_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "attempts": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "question_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "answer_text",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "result",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "score",
+        "type": "DOUBLE PRECISION",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "assisted",
+        "type": "BOOLEAN",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "assessment",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "state_updates",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "idempotency_key",
+        "type": "VARCHAR(80)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [
+      {
+        "name": "uq_attempt_request",
+        "columns": [
+          "session_id",
+          "idempotency_key"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "ix_attempts_question_id",
+        "columns": [
+          "question_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_attempts_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "batch_submissions": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "batch_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "idempotency_key",
+        "type": "VARCHAR(80)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "payload_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "response",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [
+      {
+        "name": "uq_batch_submission",
+        "columns": [
+          "session_id",
+          "idempotency_key"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "ix_batch_submissions_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "concept_relations": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "target_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "relation_type",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "origin",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "verified",
+        "type": "BOOLEAN",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_concept_relations_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_concept_relations_source_id",
+        "columns": [
+          "source_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_concept_relations_target_id",
+        "columns": [
+          "target_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "concepts": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "name",
+        "type": "VARCHAR(240)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "topic_type",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "summary",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "module",
+        "type": "VARCHAR(100)",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_concepts_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_concepts_name",
+        "columns": [
+          "name"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "courses": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(200)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "description",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_ref",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [],
+    "foreign_keys": []
+  },
+  "evidence_concept_links": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_ref",
+        "type": "VARCHAR(160)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_version",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "evidence_group_id",
+        "type": "VARCHAR(160)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "canonical_item_id",
+        "type": "VARCHAR(160)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "dimension",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "criterion_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_kind",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "attribution",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "observed_result",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_span_refs",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "help_snapshot",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "eligible_for_mastery",
+        "type": "BOOLEAN",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "payload",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_evidence_concept_links_canonical_item_id",
+        "columns": [
+          "canonical_item_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_evidence_concept_links_concept_id",
+        "columns": [
+          "concept_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_evidence_concept_links_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_evidence_concept_links_evidence_group_id",
+        "columns": [
+          "evidence_group_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_evidence_concept_links_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_evidence_concept_links_source_ref",
+        "columns": [
+          "source_ref"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_evidence_concept_links_student_id",
+        "columns": [
+          "student_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "exercise_search_assets": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "question_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "role",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "content_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "location",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_exercise_search_assets_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_exercise_search_assets_question_id",
+        "columns": [
+          "question_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "exercise_search_projections": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "question_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "representation_id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "generation",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "config_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "payload",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_exercise_search_projections_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_exercise_search_projections_generation",
+        "columns": [
+          "generation"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_exercise_search_projections_question_id",
+        "columns": [
+          "question_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_exercise_search_projections_status",
+        "columns": [
+          "status"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "exercise_search_representations": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "question_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "asset_ids",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "extractor",
+        "type": "VARCHAR(180)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "payload",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "review_status",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_exercise_search_representations_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_exercise_search_representations_question_id",
+        "columns": [
+          "question_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "index_tasks": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "target",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "details",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "namespace",
+        "type": "VARCHAR(80)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "token",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "lease_until",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [],
+    "foreign_keys": []
+  },
+  "learning_sessions": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(200)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "goal",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "agenda",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_ids",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "phase",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "pending_question_id",
+        "type": "VARCHAR(96)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "pending_context",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "active_turn_id",
+        "type": "VARCHAR(36)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_learning_sessions_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "materials": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(250)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "text",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_ids",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_ref",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "origin",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "visibility",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "question_id",
+        "type": "VARCHAR(96)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_materials_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "memory_facts": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "seq",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_ref",
+        "type": "VARCHAR(160)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "kind",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "payload",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [
+      {
+        "name": "uq_memory_fact_seq",
+        "columns": [
+          "session_id",
+          "seq"
+        ]
+      },
+      {
+        "name": "uq_memory_fact_source",
+        "columns": [
+          "session_id",
+          "source_ref"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "ix_memory_facts_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "memory_items": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_id",
+        "type": "VARCHAR(96)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "kind",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "text",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "evidence_ids",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_memory_items_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "memory_jobs": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "target_seq",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "extractor_version",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "close_version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "final",
+        "type": "BOOLEAN",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "reason",
+        "type": "VARCHAR(40)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "job_kind",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "scope_key",
+        "type": "VARCHAR(160)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "source_generation",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "rule_version",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "result_snapshot",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "input_fingerprint",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "lease_token",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "attempts",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "available_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "lease_until",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": "VARCHAR(100)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "metrics",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [
+      {
+        "name": "uq_memory_job_scope",
+        "columns": [
+          "job_kind",
+          "scope_key",
+          "source_generation",
+          "rule_version"
+        ]
+      },
+      {
+        "name": "uq_memory_job_watermark",
+        "columns": [
+          "job_kind",
+          "session_id",
+          "target_seq",
+          "extractor_version",
+          "close_version"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "ix_memory_jobs_job_kind",
+        "columns": [
+          "job_kind"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_memory_jobs_scope_key",
+        "columns": [
+          "scope_key"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_memory_jobs_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_memory_jobs_status",
+        "columns": [
+          "status"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "messages": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "role",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "agent",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "content",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "citations",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "metadata_json",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_messages_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "model_calls": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "purpose",
+        "type": "VARCHAR(40)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "resource_id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "stage",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "page",
+        "type": "INTEGER",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "request_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "model",
+        "type": "VARCHAR(120)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "response",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "metrics",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_model_calls_purpose",
+        "columns": [
+          "purpose"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_model_calls_request_hash",
+        "columns": [
+          "request_hash"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_model_calls_resource_id",
+        "columns": [
+          "resource_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "questions": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "stem",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "options",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "answer",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "question_type",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "cognitive_type",
+        "type": "VARCHAR(24)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "cognitive_dimension",
+        "type": "INTEGER",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "difficulty",
+        "type": "VARCHAR(24)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "concept_ids",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "explanation",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_ref",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "generated",
+        "type": "BOOLEAN",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "validation",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "difficulty_estimate",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "teaching_reference",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_questions_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_questions_source_id",
+        "columns": [
+          "source_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "scope_memories": {
+    "columns": [
+      {
+        "name": "scope_key",
+        "type": "VARCHAR(160)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "scope_kind",
+        "type": "VARCHAR(16)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "content",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "claims",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_refs",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_generation",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "generation",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "invalidation_version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "enabled",
+        "type": "BOOLEAN",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "blocked_source_refs",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "blocked_claim_ids",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "cutoff_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "legacy_barrier",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "dependency_fingerprint",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "scope_key"
+    ],
+    "unique": [
+      {
+        "name": "uq_scope_memory_owner",
+        "columns": [
+          "student_id",
+          "scope_kind",
+          "course_id",
+          "concept_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "ix_scope_memories_concept_id",
+        "columns": [
+          "concept_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_scope_memories_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_scope_memories_scope_kind",
+        "columns": [
+          "scope_kind"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_scope_memories_student_id",
+        "columns": [
+          "student_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "session_concept_observations": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "content",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "claims",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_refs",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "covered_seq",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "invalidation_version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(20)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [
+      {
+        "name": "uq_session_concept_observation",
+        "columns": [
+          "session_id",
+          "concept_id"
+        ]
+      }
+    ],
+    "indexes": [
+      {
+        "name": "ix_session_concept_observations_concept_id",
+        "columns": [
+          "concept_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_session_concept_observations_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_session_concept_observations_session_id",
+        "columns": [
+          "session_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_session_concept_observations_student_id",
+        "columns": [
+          "student_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "session_goal_states": {
+    "columns": [
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "root_goal_id",
+        "type": "VARCHAR(80)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "active_goal_id",
+        "type": "VARCHAR(80)",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "nodes",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "return_stack",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "next_action",
+        "type": "VARCHAR(1000)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "session_id"
+    ],
+    "unique": [],
+    "indexes": [],
+    "foreign_keys": []
+  },
+  "session_memory_extractions": {
+    "columns": [
+      {
+        "name": "session_id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "covered_seq",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "next_seq",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "last_enqueued_seq",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "closed",
+        "type": "BOOLEAN",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "close_version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "invalidation_version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "content",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_tags",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "experience_source_refs",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "blocked_source_refs",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "experience_covered_seq",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "experience_version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "experience_status",
+        "type": "VARCHAR(20)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "preferences",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_refs",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "unassigned",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "session_id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_session_memory_extractions_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_session_memory_extractions_student_id",
+        "columns": [
+          "student_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "student_states": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(160)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "student_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "concept_id",
+        "type": "VARCHAR(96)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "mastery",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "evidence_ids",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "evidence_questions",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "misconceptions",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "version",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "next_review_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_student_states_concept_id",
+        "columns": [
+          "concept_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "textbook_documents": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(250)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "edition",
+        "type": "VARCHAR(120)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_uri",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "source_kind",
+        "type": "VARCHAR(40)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "format",
+        "type": "VARCHAR(16)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "content_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "raw_content",
+        "type": "BYTEA",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "parser_version",
+        "type": "VARCHAR(80)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "status",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "parsed",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "provenance",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "asset_root",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "page_count",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "manifest",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_textbook_documents_course_id",
+        "columns": [
+          "course_id"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "textbook_extraction_sections": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "book_id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "number",
+        "type": "VARCHAR(40)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "title",
+        "type": "VARCHAR(250)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "page_start",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "page_end",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "review_status",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "payload",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "payload_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "review",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "updated_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "fingerprint",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "extraction_status",
+        "type": "VARCHAR(32)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "lease_token",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "lease_until",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": true,
+        "default": null
+      },
+      {
+        "name": "attempts",
+        "type": "INTEGER",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "error",
+        "type": "TEXT",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "receipt",
+        "type": "JSON",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [],
+    "indexes": [
+      {
+        "name": "ix_textbook_extraction_sections_book_id",
+        "columns": [
+          "book_id"
+        ],
+        "unique": false
+      },
+      {
+        "name": "ix_textbook_extraction_sections_number",
+        "columns": [
+          "number"
+        ],
+        "unique": false
+      }
+    ],
+    "foreign_keys": []
+  },
+  "textbook_import_receipts": {
+    "columns": [
+      {
+        "name": "id",
+        "type": "VARCHAR(36)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "course_id",
+        "type": "VARCHAR(60)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "request_key",
+        "type": "VARCHAR(80)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "request_hash",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "document_id",
+        "type": "VARCHAR(64)",
+        "nullable": false,
+        "default": null
+      },
+      {
+        "name": "created_at",
+        "type": "TIMESTAMP WITHOUT TIME ZONE",
+        "nullable": false,
+        "default": null
+      }
+    ],
+    "primary_key": [
+      "id"
+    ],
+    "unique": [
+      {
+        "name": "uq_textbook_import_request",
+        "columns": [
+          "course_id",
+          "request_key"
+        ]
+      }
+    ],
+    "indexes": [],
+    "foreign_keys": []
+  }
+}
